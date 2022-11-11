@@ -22,12 +22,12 @@ export default Joi.object({
   DATABASE_NAME: Joi.string().required(),
   DATABASE_USER: Joi.string().required(),
   DATABASE_PASS: Joi.string().required(),
-  DATABASE_PORT: Joi.number().required(),
+  DATABASE_PORT: Joi.number().optional(),
   DATABASE_TYPE: Joi.string()
     .valid(...dbTypeOptions)
     .required(),
   // PICTSHARE
   PICTSHARE_DOCKER: Joi.string().required(),
   PICTSHARE_API: Joi.string().required(),
-  PICTSHARE_PORT: Joi.number().required(),
+  PICTSHARE_PORT: Joi.number().optional(),
 });

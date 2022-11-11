@@ -8,12 +8,16 @@ export const config = registerAs('config', () => {
     DATABASE_NAME: process.env.DATABASE_NAME,
     DATABASE_USER: process.env.DATABASE_USER,
     DATABASE_PASS: process.env.DATABASE_PASS,
-    DATABASE_PORT: parseInt(process.env.DATABASE_PORT, 10),
+    DATABASE_PORT: process.env.DATABASE_PORT
+      ? parseInt(process.env.DATABASE_PORT, 10)
+      : undefined,
     DATABASE_TYPE: process.env.DATABASE_TYPE as any,
     // PICTSHARE
     PICTSHARE_API: process.env.PICTSHARE_API,
     PICTSHARE_DOCKER: process.env.PICTSHARE_DOCKER,
-    PICTSHARE_PORT: parseInt(process.env.PICTSHARE_PORT, 10),
+    PICTSHARE_PORT: process.env.PICTSHARE_PORT
+      ? parseInt(process.env.PICTSHARE_PORT, 10)
+      : undefined,
   };
 });
 
