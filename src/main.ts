@@ -7,6 +7,10 @@ async function bootstrap() {
   const port = process.env.PORT || 3100;
   const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
+    .addBearerAuth(
+      { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
+      'access-token',
+    )
     .setTitle('IONIX')
     .setDescription('The Ionix API application')
     .setVersion('1.0')

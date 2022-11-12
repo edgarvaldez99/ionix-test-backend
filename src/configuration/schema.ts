@@ -26,8 +26,13 @@ export default Joi.object({
   DATABASE_TYPE: Joi.string()
     .valid(...dbTypeOptions)
     .required(),
+  // JWT
+  JWT_SECRET: Joi.string().required(),
   // PICTSHARE
   PICTSHARE_DOCKER: Joi.string().required(),
   PICTSHARE_API: Joi.string().required(),
   PICTSHARE_PORT: Joi.number().optional(),
+  // ADMIN USER
+  ADMIN_USER: Joi.string().required(),
+  ADMIN_PASS: Joi.string().required(),
 });
