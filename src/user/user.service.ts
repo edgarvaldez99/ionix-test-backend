@@ -24,12 +24,8 @@ export class UserService {
     return user;
   }
 
-  async findByUsername(username: string) {
-    const user = await this.userRepository.findOne({ where: { username } });
-    if (!user) {
-      throw new NotFoundException(`User with username=${username} not found`);
-    }
-    return user;
+  async findByUsername(username: string): Promise<User | null> {
+    return await this.userRepository.findOne({ where: { username } });
   }
 
   async create(data: CreateUserReqDto) {

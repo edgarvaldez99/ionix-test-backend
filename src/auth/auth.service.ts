@@ -17,6 +17,9 @@ export class AuthService {
   async login(loginDto: LoginReqDto) {
     const { username, password } = loginDto;
     const user = await this.userService.findByUsername(username);
+    if (!user) {
+      throw new UnauthorizedException('Username or password incorrect');
+    }
     const isMatch = await compare(password, user.password);
     if (!isMatch) {
       throw new UnauthorizedException('Username or password incorrect');
