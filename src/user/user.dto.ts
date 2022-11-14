@@ -18,9 +18,10 @@ export class CreateUserReqDto {
   readonly lastname: string;
 
   @IsString()
+  @IsOptional()
+  @ValidateIf((obj) => !!obj.email)
   @IsEmail()
   @ApiProperty()
-  @IsOptional()
   readonly email?: string;
 
   @IsString()
