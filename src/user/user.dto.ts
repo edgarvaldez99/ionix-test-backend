@@ -5,6 +5,7 @@ import {
   IsOptional,
   IsString,
   Length,
+  ValidateIf,
 } from 'class-validator';
 
 export class CreateUserReqDto {
@@ -33,4 +34,11 @@ export class CreateUserReqDto {
   readonly password: string;
 }
 
-export class UpdateUserReqDto extends PartialType(CreateUserReqDto) {}
+export class UpdateUserReqDto extends PartialType(CreateUserReqDto) {
+  @IsString()
+  @IsOptional()
+  @ValidateIf((obj) => !!obj.password)
+  @Length(6)
+  @ApiProperty()
+  readonly password?: string;
+}
